@@ -7,6 +7,71 @@
 
 :root {
 
+    /* Colorsss */
+
+    --prime-color: #F5F5F5;
+    --second-color: #CCCCCC;
+    --accent-color: #943eac;
+
+    --text-color: #323232;
+    --text-light-color: #C2C2C2;
+
+    --border-color: #E0E0E0;
+
+
+
+    /* Typography and shii */
+
+    --body-font: "Geist", sans-serif;
+
+    --text-xs: 0.7rem;
+    --text-sm: 0.75rem;
+    --text-md: 0.9rem;
+    --text-lg: 1rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 2rem;
+    --text-3xl: 3rem;
+
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+
+    /* Borders */
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-full: 9999px;
+
+
+
+    /* Shadows */
+
+    --shadow-sm:
+        2px 2px 4px #dfdada,
+        -2px -2px 4px #ffffff;
+
+    --shadow-md:
+        6px 6px 12px #cfcfcf,
+        -6px -6px 12px #ffffff;
+
+    --shadow-lg:
+        12px 12px 24px #cfcfcf,
+        -12px -12px 24px #ffffff;
+
+
+
+    /* Transitions */
+
+
+    --transition-fast: .2s ease;
+    --transition-normal: .3s ease;
+    --transition-slow: .5s ease;
+
 }
 
 
@@ -14,7 +79,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Geist", sans-serif;
+    font-family: var(--body-font);
 }
 
 body {
@@ -22,5 +87,18 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    
+    background-color: var(--prime-color);   
+}
+
+
+/* The different groups of the contaianer */
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+
 }
