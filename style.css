@@ -1,6 +1,6 @@
 /* Imported my geisty */
 
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
 
 /* Rooooooottttttt */
@@ -22,7 +22,7 @@
 
     /* Typography and shii */
 
-    --body-font: "Geist", sans-serif;
+    --body-font: "Geist mono", sans-serif;
 
     --text-xs: 0.7rem;
     --text-sm: 0.75rem;
@@ -88,10 +88,17 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: var(--prime-color);   
+    transition: 500ms ease;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-light-color);
 }
 
 .container {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     border-radius: var(--radius-md);
     padding: 30px;
     width: fit-content;
@@ -100,8 +107,35 @@ body {
 
 .header {
     display: flex;
+}
+
+.header button {
+    width: 30px;
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    display: flex;
     justify-content: center;
-    gap: 100px;
+    align-items: center;
+}
+
+.header button svg {
+    width: 15px;
+    height: 15px;
+}
+
+.logo-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.logo-wrapper svg {
+    color: var(--text-light-color);
+}
+
+
+.header button {
+    margin-left: auto;
 }
 
 
@@ -111,7 +145,7 @@ body {
 .prompt-container {
     display: flex;
     width: 100%;
-    margin: 20px 0;
+    margin: 30px 0;
     gap: 5px;
 }
 
@@ -132,8 +166,9 @@ body {
 .prompt-container button {
     width: 70px;
     min-height: 50px;
-    background-color: #323232;
-    color: var(--prime-color);
+    background-color: var(--prime-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow-sm);
     cursor: pointer;
     border: none;
     border-radius: var(--radius-sm)
@@ -162,11 +197,13 @@ body {
     left: 0;
     border: none;
     border-radius: var(--radius-sm);
-    background-color: var(--accent-color);
+    background-color: var(--prime-color);
+    box-shadow: var(--shadow-sm);
     gap: 10px;
     font-weight: 600;
     color: var(--text-color);
     margin-left: auto;
+    cursor: pointer;
 }
 
 .prompt-actions button svg {
@@ -183,6 +220,5 @@ body {
     border-radius: var(--radius-sm);
     min-height: 30px;
     padding: 10px;
-    transition: 500ms ease;
 }
 
