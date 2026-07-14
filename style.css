@@ -117,6 +117,16 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: 300ms ease;
+}
+
+.header button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px) scale(1.03);
+    background-color: var(--text-color);
+    color: var(--prime-color);
 }
 
 .header button svg {
@@ -171,8 +181,19 @@ h1 {
     box-shadow: var(--shadow-sm);
     cursor: pointer;
     border: none;
-    border-radius: var(--radius-sm)
+    border-radius: var(--radius-sm);
+    transition: 300ms ease;
 }
+
+
+.prompt-container button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px) scale(1.03);
+    background-color: var(--accent-color);
+    color: white;
+}
+
 
 .prompt-container svg {
     width: 20px;
@@ -204,6 +225,15 @@ h1 {
     color: var(--text-color);
     margin-left: auto;
     cursor: pointer;
+    transition: 300ms;
+}
+
+.prompt-actions button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px) scale(1.03);
+    background-color: var(--accent-color);
+    color: white;
 }
 
 .prompt-actions button svg {
@@ -221,4 +251,3 @@ h1 {
     min-height: 30px;
     padding: 10px;
 }
-
