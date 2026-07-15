@@ -284,6 +284,11 @@ h1 {
     object-fit: cover;
 }
 
+.gallery-grid .img-card:hover .img-download-btn {
+    opacity: 0.8;
+    transform: translateY(0);
+}
+
 .gallery-grid .img-card .img-overlay {
     position: absolute;
     bottom: 0;
@@ -308,11 +313,14 @@ h1 {
     border: none;
     cursor: pointer;
     background: grey;
-    opacity: 50%;
+
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .2s ease, transform .2s ease;
 }
 
 .gallery-grid .img-card .img-download-btn:hover {
     transform: scale(1.05);
-    opacity: 80%;
+    opacity: 1;
 }
 
