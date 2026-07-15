@@ -197,6 +197,7 @@ h1 {
     border: none;
     background-color: var(--input-bg, white);
     color: var(--text-color);
+    font-size: var(--text-sm);
 }
 
 .prompt-container textarea:focus {
