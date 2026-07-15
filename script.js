@@ -1,6 +1,52 @@
 const themeToggle = document.querySelector(".theme-toggle");
+
+const promptForm = document.querySelector(".prompt-form");
 const promptInput = document.querySelector(".prompt-input");
 const promptBtn = document.querySelector(".prompt-btn");
+
+const modelSelect = document.getElementById("model-select");
+const countSelect = document.getElementById("count-select");
+const ratioSelect = document.getElementById("ratio-select");
+
+
+
+// Prompt form
+
+// Hnadles the form submissions
+
+const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+
+    // For the form values
+    const selectedModel = modelSelect.value;
+    const imageCount = parseInt(countSelect.value) || 1;
+    const aspectRatio = ratioSelect.value || "1/1";
+    const promptText = promptInput.value.trim();
+
+    console.log(selectedModel, imageCount, aspectRatio, promptText)
+}
+
+
+
+promptForm.addEventListener("submit", handleFormSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Array of examples for the prompts
 
 const examplePrompts = [
   "A ZayLevelTen-inspired fashion campaign in a futuristic Lagos street",
@@ -15,11 +61,6 @@ const examplePrompts = [
   "A stylish creative director's office with moodboards, typography posters, cameras, and high-end fashion pieces"
 ];
 
-
-
-
-
-
 // Fill the prompt input with random examples
 
 promptBtn.addEventListener("click", () => {
@@ -27,8 +68,6 @@ promptBtn.addEventListener("click", () => {
     promptInput.value = prompt;
     promptInput.focus()
 });
-
-
 
 
 
