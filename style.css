@@ -277,7 +277,7 @@ h1 {
     box-shadow: var(--shadow-sm);
 }
 
-.gallery-grid .img-card:not(.loading):hover {
+.gallery-grid .img-card:not(.loading, .error):hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -288,7 +288,7 @@ h1 {
     object-fit: cover;
 }
 
-.gallery-grid .img-card.loading :is(.result-img, .img-overlay) {
+.gallery-grid .img-card:is(.loading, .error) :is(.result-img, .img-overlay) {
     display: none;
 }
 
@@ -334,12 +334,28 @@ h1 {
 
 .gallery-grid .img-card .status-container {
     padding: 15px;
-    display: flex;
+    display: none;
     gap: 13px;
     flex-direction: column;
     align-items: center;
 }
 
+.gallery-grid .img-card:where(.loading, .error) .status-container {
+    display: flex;
+}
+
+
+.gallery-grid .img-card.error .spinner {
+    display: none;
+}
+
+.gallery-grid .img-card.loading .status-container svg {
+    display: none;
+}
+
+.gallery-grid .img-card.error .status-container svg {
+    color: #ef4444;
+}
 
 .gallery-grid .img-card.loading .spinner {
     width: 25px;
