@@ -10,6 +10,8 @@ const ratioSelect = document.getElementById("ratio-select");
 
 const gridGallery = document.querySelector(".gallery-grid");
 
+const API_KEY = window.HF_API_KEY;  //Hugging face Api, set in config.js (gitignored)
+
 // Array of examples for the prompts
 
 const examplePrompts = [
@@ -66,11 +68,14 @@ const createImageCards = (selectedModel, imageCount, aspectRatio, promptText) =>
 
                     </div>
 
-                    <img src="test.webp" class="result-img">
-
                 </div>`;
     }
-}
+
+    lucide.createIcons();
+
+    generateImages(selectedModel, imageCount, aspectRatio, promptText);
+
+};
 
 const handleFormSubmit = (e) => {
 
@@ -87,3 +92,81 @@ const handleFormSubmit = (e) => {
 }
 
 promptForm.addEventListener("submit", handleFormSubmit);
+
+
+
+const getImageDimensions = (aspectRatio, baseSize = 512) => {
+    const [width, height] = aspectRatio.split("/").map(Number);
+    const scaleFactor = baseSize / Math.sqrt(width * height);
+
+    let calculatedWidth = Math.round(width * scaleFactor);
+    let calculatedHeight = Math.round(height * scaleFactor);
+
+    // Ensure dimensions are multiples of 16
+    calculatedWidth = Math.floor(calculatedWidth / 16) * 16;
+    calculatedHeight = Math.floor(calculatedHeight / 16) * 16;
+
+    return { width: calculatedWidth, height: calculatedHeight };
+};
+
+const updateImageCard = (imgIndex, imgUrl) => {
+    const imgCard = document.getElementById(`img-card-${imgIndex}`)
+
+    if(!imgCard) return;
+
+    imgCard.classList.remove("loading");
+    imgCard.innerHTML = `<img src="${imgUrl}" class="result-img"/>
+
+                    <div class="img-overlay">
+                        
+                        <a href="${imgUrl}" class="img-download-btn" download="${Date.now()}.png">
+
+                            <i data-lucide="download"></i>
+
+                        </a>
+
+                    </div>`;
+
+    lucide.createIcons();
+}
+
+
+const generateImages = async (selectedModel, imageCount, aspectRatio, promptText) => {
+    const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectedModel}`;
+    
+    const {width, height} = getImageDimensions(aspectRatio);
+
+
+
+    // Create an array of image generation promises
+
+    const imagePromises = Array.from({length: imageCount}, async(_, i) => {
+
+        try {
+            const response = await fetch(MODEL_URL, {
+            headers: {
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+            "x-use-cache": "false",
+        },
+            method: "POST",
+            body: JSON.stringify({
+            inputs: promptText,
+            parameters: {width, height},
+            options: {wait_for_model: true, user_cache: false},
+        }),
+    });
+
+    if(!response.ok) throw new Error((await response.json())?.error);
+
+        const result = await response.blob();
+        updateImageCard(i, URL.createObjectURL(result));
+
+    } catch (error) {
+        console.log(error);
+    }
+    })
+
+    await Promise.allSettled(imagePromises);
+
+}

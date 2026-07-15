@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="config.js"></script>
+
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <title>Aether | Ai image generator</title>
@@ -82,11 +84,8 @@
                     <select class="custom-select" id="model-select" required>
 
                         <option value="" selected disabled>AI Engine</option>
-                        <option value="black-forest-labs/FLUX.1-dev">FLUX.1-dev</option>
                         <option value="black-forest-labs/FLUX.1-schnell">FLUX.1-schnell</option>
-                        <option value="stabilityai/stable-diffusion-xl-base-1.0">Stable Diffusion XL</option>
-                        <option value="runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</option>
-                        <option value="prompthero/openjourney">OpenJourney</option>
+                        <option value="stabilityai/stable-diffusion-3-medium-diffusers">Stable Diffusion 3 Medium</option>
 
                     </select>
 
@@ -142,47 +141,23 @@
 
             </div>
 
+            
+            
+                <!-- The gallery for the images to appear -->
+
+                <div class="gallery-grid">
+
             </form>
 
-            
-            <!-- The gallery for the images to appear -->
-
-            <div class="gallery-grid">
-
-
-                
-                <!-- The first one  -->
-
-                <!-- <div class="img-card loading">
-
-                    <div class="status-container">
-
-                        <div class="spinner"></div>
-
-                        <i data-lucide="triangle-alert"></i>
-
-                        <p class="status-text">Generating...</p>
-
-                    </div>
-
-                    <img src="test.webp" class="result-img">
-
-                    <div class="img-overlay">
-                        
-                        <button class="img-download-btn">
-
-                            <i data-lucide="download"></i>
-
-                        </button>
-
-                    </div>
-
-                </div> -->
-
-
-            </div>
+        </div>
 
         </div>
+
+    </div>
+
+    <div class="my-tag">
+
+        <p>@dobsnotnull</p>
 
     </div>
 

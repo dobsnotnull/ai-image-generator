@@ -1,0 +1,1 @@
+window.HF_API_KEY = "your-huggingface-api-key-here";
