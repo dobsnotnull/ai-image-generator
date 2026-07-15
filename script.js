@@ -8,43 +8,7 @@ const modelSelect = document.getElementById("model-select");
 const countSelect = document.getElementById("count-select");
 const ratioSelect = document.getElementById("ratio-select");
 
-
-
-// Prompt form
-
-// Hnadles the form submissions
-
-const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-
-    // For the form values
-    const selectedModel = modelSelect.value;
-    const imageCount = parseInt(countSelect.value) || 1;
-    const aspectRatio = ratioSelect.value || "1/1";
-    const promptText = promptInput.value.trim();
-
-    console.log(selectedModel, imageCount, aspectRatio, promptText)
-}
-
-
-
-promptForm.addEventListener("submit", handleFormSubmit);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const gridGallery = document.querySelector(".gallery-grid");
 
 // Array of examples for the prompts
 
@@ -70,8 +34,6 @@ promptBtn.addEventListener("click", () => {
 });
 
 
-
-
 // We're doing the dark-themed stuff
 
 const toggleTheme = () => {
@@ -80,3 +42,48 @@ const toggleTheme = () => {
 }
 
 themeToggle.addEventListener("click", toggleTheme);
+
+// Prompt form
+
+// Hnadles the form submissions
+
+const createImageCards = (selectedModel, imageCount, aspectRatio, promptText) => {
+
+    gridGallery.innerHTML = "";
+
+
+
+
+    for (let i = 0; i < imageCount; i++) {
+        gridGallery.innerHTML += `<div class="img-card loading" id="img-card-${i}" style="aspect-ratio: ${aspectRatio}">
+                    <div class="status-container">
+
+                        <div class="spinner"></div>
+
+                        <i data-lucide="triangle-alert"></i>
+
+                        <p class="status-text">Generating...</p>
+
+                    </div>
+
+                    <img src="test.webp" class="result-img">
+
+                </div>`;
+    }
+}
+
+const handleFormSubmit = (e) => {
+
+    e.preventDefault();
+
+
+    // For the form values
+    const selectedModel = modelSelect.value;
+    const imageCount = parseInt(countSelect.value) || 1;
+    const aspectRatio = ratioSelect.value || "1/1";
+    const promptText = promptInput.value.trim();
+
+    createImageCards(selectedModel, imageCount, aspectRatio, promptText);
+}
+
+promptForm.addEventListener("submit", handleFormSubmit);

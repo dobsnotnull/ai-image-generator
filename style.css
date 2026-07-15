@@ -290,11 +290,15 @@ h1 {
 
 /* The result images */
 
+.main-content .gallery-grid:has(.img-card){
+    margin-top: 30px;
+}
+
 .main-content .gallery-grid {
     display: grid;
     gap: 15px;
-    margin-top: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
 }
 
 .gallery-grid .img-card {
