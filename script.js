@@ -10,8 +10,6 @@ const ratioSelect = document.getElementById("ratio-select");
 
 const gridGallery = document.querySelector(".gallery-grid");
 
-const API_KEY = window.HF_API_KEY;  //Hugging face Api, set in config.js (gitignored)
-
 // Array of examples for the prompts
 
 const examplePrompts = [
@@ -132,8 +130,6 @@ const updateImageCard = (imgIndex, imgUrl) => {
 
 
 const generateImages = async (selectedModel, imageCount, aspectRatio, promptText) => {
-    const MODEL_URL = `https://router.huggingface.co/hf-inference/models/${selectedModel}`;
-    
     const {width, height} = getImageDimensions(aspectRatio);
 
 
@@ -143,17 +139,15 @@ const generateImages = async (selectedModel, imageCount, aspectRatio, promptText
     const imagePromises = Array.from({length: imageCount}, async(_, i) => {
 
         try {
-            const response = await fetch(MODEL_URL, {
+            const response = await fetch("/api/generate", {
             headers: {
-            Authorization: `Bearer ${API_KEY}`,
             "Content-Type": "application/json",
-            "x-use-cache": "false",
         },
             method: "POST",
             body: JSON.stringify({
-            inputs: promptText,
-            parameters: {width, height},
-            options: {wait_for_model: true, user_cache: false},
+            model: selectedModel,
+            prompt: promptText,
+            width, height,
         }),
     });
 
